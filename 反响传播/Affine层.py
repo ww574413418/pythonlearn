@@ -12,6 +12,7 @@ class Affine:
 
     def forward(self,x):
         self.x = x
+        x = x.reshape(x.shape[0], -1)
         return np.dot(x,self.w) + self.b
 
     def backward(self,dout):

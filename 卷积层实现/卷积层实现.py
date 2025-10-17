@@ -1,6 +1,7 @@
-from im2col import im2col
-from col2im import col2im
+from 卷积层实现.im2col import im2col
+from 卷积层实现.col2im import col2im
 import numpy as np
+
 class Convolution:
     def __init__(self,w,b,stride=1,padding=0):
         self.w = w
@@ -29,8 +30,8 @@ class Convolution:
         # 获取输入数据的个数,通道,长宽
         n,c,h,w = x.shape
         # 计算输出数据长宽
-        out_h = int((h + 2*self.padding - fh) / self.stride)
-        out_w = int((w + 2*self.padding - fw) / self.stride)
+        out_h = int((h + 2*self.padding - fh) / self.stride) + 1
+        out_w = int((w + 2*self.padding - fw) / self.stride) + 1
 
         # 定义 col 获取要参与x中要参与计算的数据,并展开
         col = im2col(x,fh,fw,self.stride,self.padding)
